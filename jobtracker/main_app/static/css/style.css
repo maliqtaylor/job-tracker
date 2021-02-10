@@ -12,3 +12,12 @@ footer.page-footer {
   padding-top: 0;
   text-align: right;
 }
+
+.detail{
+  min-height: 300px;
+  overflow: scroll;
+}
+
+.card-action{
+  margin-top: 70px;
+}

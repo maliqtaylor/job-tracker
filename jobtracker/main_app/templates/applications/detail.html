@@ -1,23 +1,55 @@
 {% extends 'base.html' %}
 {% block content %}
+<h3 class="center-align">Application Details</h3>
 
-<h1>Application Details</h1>
-
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ app.title }}</span>
-    <p>Location: {{ app.location }}</p>
-    <p>Company: {{ app.company }}</p>
-    <!-- {% if cat.age > 0 %}
-    <p>Age: {{ cat.age }}</p>
-    {% else %}
-    <p>Age: Kitten</p>
-    {% endif %} -->
-  </div>
-  <div class="card-action">
-    <a href="{% url 'applications_update' app.id %}">Edit</a>
-    <a href="{% url 'applications_delete' app.id %}">Delete</a>
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card detail">
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{{ app.title }} <i
+            class="material-icons right">more_vert</i></span>
+        <p>Company: {{ app.company }}</p>
+        <p>Location: {{ app.location }}</p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Add Interview<i class="material-icons right">close</i></span>
+        <form action="{% url 'add_interview' app.id %}" method="post">
+          {% csrf_token %}
+          {{ interview_form.as_p }}
+          <div class="center">
+            <input type="submit" class="btn ipt" value="Add Interview">
+          </div>
+        </form>
+      </div>
+      <div class="card-action">
+        <a class="hi" href="{% url 'applications_update' app.id %}">Edit</a>
+        <a href="{% url 'applications_delete' app.id %}">Delete</a>
+      </div>
+    </div>
   </div>
 </div>
 
+<hr>
+<h5 class="center-align">Interviews</h5>
+
+<div class="row">
+  <div class="col s12">
+    <table class="highlight centered">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Interviewer</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for interview in app.interview_set.all %}
+        <tr>
+          <td>{{interview.date}}</td>
+          <td>{{interview.interviewer}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 {% endblock %}
