@@ -14,10 +14,14 @@ footer.page-footer {
 }
 
 .detail{
-  min-height: 300px;
+  min-height: 400px;
   overflow: scroll;
 }
 
 .card-action{
-  margin-top: 70px;
+  margin-top: 200px;
+}
+
+.nav-wrapper, .page-footer{
+  background-color: lightslategrey;
 }
