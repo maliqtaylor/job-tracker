@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Application Details</h1>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ app.title }}</span>
+    <p>Location: {{ app.location }}</p>
+    <p>Company: {{ app.company }}</p>
+    <!-- {% if cat.age > 0 %}
+    <p>Age: {{ cat.age }}</p>
+    {% else %}
+    <p>Age: Kitten</p>
+    {% endif %} -->
+  </div>
+  <div class="card-action">
+    <a href="{% url 'applications_update' app.id %}">Edit</a>
+    <a href="{% url 'applications_delete' app.id %}">Delete</a>
+  </div>
+</div>
+
+{% endblock %}
