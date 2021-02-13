@@ -13,6 +13,10 @@ footer.page-footer {
   text-align: right;
 }
 
+textarea{
+  min-width: 440px;
+}
+
 .detail{
   min-height: 400px;
   overflow: scroll;

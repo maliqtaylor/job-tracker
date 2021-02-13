@@ -10,6 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import environ
+environ.Env()
+environ.Env.read_env()
+
+import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +31,7 @@ SECRET_KEY = '^slvysrem!)%-!!f7mbvdne8%mlee*#$a7q+j@s2k5%t=tj_&3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [django-job-tracker-app.herokuapp.com]
 
 
 # Application definition
@@ -114,10 +120,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/applications/'
 LOGOUT_REDIRECT_URL = '/'
+
+import django_on_heroku
+django_on_heroku.settings(locals())
